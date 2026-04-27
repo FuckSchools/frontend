@@ -55,3 +55,12 @@ State progression is managed by typed route state rather than ad hoc client glob
 - Auth/session concerns are isolated in Clerk wrappers.
 - UI state should be derived from router and query inputs rather than duplicated in multiple stores.
 - TanStack Start + TanStack Router keep navigation and document rendering aligned with the TypeScript graph.
+
+## v3.1 Studio Runtime Notes
+- The frontend is now documented as the presentation surface for EventTrace-driven traversal rather than as a generic app shell.
+- GoalContext should be treated as an input to the router tree and route loaders so the active frontier can be rendered without recreating backend policy in the browser.
+- Native Renderer hooks are a consumer boundary: the frontend should subscribe to renderer-ready events and reflect them, not invent traversal decisions.
+- The Passive Observation Layer remains backend-owned; the frontend should only display blocker state, signal provenance, and the current node lifecycle stage.
+- Thread history should be paginated so the UI can keep the active conversation window responsive even when the session backlog grows.
+- Any payload that crosses from backend to UI should match the Zod-validated contract, keeping route modules and query consumers aligned with the same schema.
+- The studio should render the current frontier, completion evidence, and transition history as a replayable runtime story, not as ad hoc local state.
