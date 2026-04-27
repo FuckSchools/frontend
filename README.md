@@ -85,7 +85,6 @@ State progression is managed by typed route state rather than ad hoc client glob
 - Incoming EventTrace payloads and MCP signal envelopes must pass Zod schema validation before touching component state.
 - TanStack Start + TanStack Router keep navigation and document rendering aligned with the TypeScript graph.
 
-<<<<<<< copilot/update-readme-to-v31
 ## Copilot Security & Performance
 
 The following practices are enforced for all Copilot-assisted contributions to this repository:
@@ -96,8 +95,9 @@ The following practices are enforced for all Copilot-assisted contributions to t
 - **EventTrace payloads are read-only.** Components that consume trace events must not mutate or re-emit them; observability is passive.
 - **Preload is intent-based.** `defaultPreload: 'intent'` limits unnecessary network requests to routes the user is actually navigating toward; `defaultPreloadStaleTime: 0` ensures stale data is never silently served from cache on navigation.
 - **MCP signals are isolated in the Streaming layer.** No MCP signal handling logic lives in route components; signal processing is confined to the integration layer to prevent runaway re-renders.
-=======
+
 ## v3.1 Studio Runtime Notes
+
 - The frontend is now documented as the presentation surface for EventTrace-driven traversal rather than as a generic app shell.
 - GoalContext should be treated as an input to the router tree and route loaders so the active frontier can be rendered without recreating backend policy in the browser.
 - Native Renderer hooks are a consumer boundary: the frontend should subscribe to renderer-ready events and reflect them, not invent traversal decisions.
@@ -105,4 +105,3 @@ The following practices are enforced for all Copilot-assisted contributions to t
 - Thread history should be paginated so the UI can keep the active conversation window responsive even when the session backlog grows.
 - Any payload that crosses from backend to UI should match the Zod-validated contract, keeping route modules and query consumers aligned with the same schema.
 - The studio should render the current frontier, completion evidence, and transition history as a replayable runtime story, not as ad hoc local state.
->>>>>>> main
