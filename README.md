@@ -10,13 +10,13 @@ The repo is built around end-to-end type safety — typed route modules, typed r
 
 ## Role in the System
 
-| Concern | Owner |
-|---|---|
-| Goal completion & session truth | Backend trace graph |
-| Rendering trace events to the UI | **This repo** (Native Renderer / EventTrace) |
-| Structural validation of incoming contracts | **This repo** (Zod Structural Enforcement) |
-| Route-level data resolution | **This repo** (DDRT) |
-| Goal-scoped state propagation | **This repo** (GoalContext) |
+| Concern                                        | Owner                                                   |
+| ---------------------------------------------- | ------------------------------------------------------- |
+| Goal completion & session truth                | Backend trace graph                                     |
+| Rendering trace events to the UI               | **This repo** (Native Renderer / EventTrace)            |
+| Structural validation of incoming contracts    | **This repo** (Zod Structural Enforcement)              |
+| Route-level data resolution                    | **This repo** (DDRT)                                    |
+| Goal-scoped state propagation                  | **This repo** (GoalContext)                             |
 | Passive signal ingestion from the orchestrator | **This repo** (Passive Observation Layer / MCP signals) |
 
 ## Four-Layer Architecture

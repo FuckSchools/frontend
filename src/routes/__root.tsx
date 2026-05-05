@@ -6,20 +6,21 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
-import ClerkProvider from '../integrations/clerk/provider'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
 import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+import { Outlet } from '@tanstack/react-router'
+import AppClerkProvider from '../integrations/clerk/provider'
 
 interface MyRouterContext {
-  queryClient: QueryClient
+  queryClient: QueryClient,
 }
 
-export const Route = createRootRouteWithContext<MyRouterContext>()({
-  head: () => ({
+export const Route = createRootRouteWithContext<MyRouterContext>()( {
+  head: () => ( {
     meta: [
       {
         charSet: 'utf-8',
@@ -38,9 +39,18 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         href: appCss,
       },
     ],
-  }),
-  shellComponent: RootDocument,
-})
+  } ),
+  shellComponent: RootComponent,
+} );
+
+function RootComponent ()
+{
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  )
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -49,8 +59,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ClerkProvider>
-          {children}
+        <AppClerkProvider>
+          { children }
           <TanStackDevtools
             config={{
               position: 'bottom-right',
@@ -63,7 +73,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               TanStackQueryDevtools,
             ]}
           />
-        </ClerkProvider>
+        </AppClerkProvider>
         <Scripts />
       </body>
     </html>

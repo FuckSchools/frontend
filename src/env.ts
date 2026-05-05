@@ -4,6 +4,7 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     SERVER_URL: z.url(),
+    BACKEND_URL: z.url(),
   },
 
   /**
