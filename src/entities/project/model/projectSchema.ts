@@ -1,7 +1,12 @@
-import z from "zod";
+import z from 'zod'
 
-export const projectSchema = z.object( {
-  id: z.uuidv4(),
+export const projectSchema = z.object({
   title: z.string(),
-  updatedAt: z.date()
-} );
+  updatedAt: z.date(),
+})
+
+export type Project = z.infer<typeof projectSchema>
+
+export const createProjectSchema = z.object({
+  title: z.string().nonempty(),
+})
